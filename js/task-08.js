@@ -16,7 +16,6 @@ function onFormSubmit(even) {
   } else {
     user.password = password;
     user.email = email;
-    console.log(user);
     formEl.reset();
   }
 }

@@ -23,5 +23,4 @@ const arrNewLiElements = images
     </li>`;
   })
   .join("");
-console.log(arrNewLiElements);
 ulElement.insertAdjacentHTML("beforeend", arrNewLiElements);

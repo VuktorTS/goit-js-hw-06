@@ -4,8 +4,11 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 const divBoxes = document.querySelector("#boxes");
-const refs = {};
+const inputElement = document.querySelector("#controls > input");
+const createBtn = document.querySelector("button[data-create]");
+const destroyBtn = document.querySelector("button[data-destroy]");
 let stepSizeDiv = 30;
+
 function createBoxes(amount) {
   const divArr = [];
   for (let i = 0; i < amount; i += 1) {
@@ -20,9 +23,10 @@ function createBoxes(amount) {
   divBoxes.append(...divArr);
 }
 
-const inputElement = document.querySelector("#controls > input");
-const createBtn = document.querySelector("button[data-create]");
-const destroyBtn = document.querySelector("button[data-destroy]");
+function destroyBoxes() {
+  divBoxes.innerHTML = "";
+  stepSizeDiv = 30;
+}
 
 createBtn.addEventListener("click", (event) => {
   if (inputElement.value <= 100 && inputElement.value > 0) {
@@ -32,7 +36,4 @@ createBtn.addEventListener("click", (event) => {
     console.log("ERROR");
   }
 });
-destroyBtn.addEventListener("click", (event) => {
-  divBoxes.innerHTML = "";
-  stepSizeDiv = 30;
-});
+destroyBtn.addEventListener("click", destroyBoxes);
